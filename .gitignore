@@ -1,0 +1,6 @@
+node_modules/*
+npm-debug.log
+dist/* 
+/index.html
+/config.json
+public/scripts/config.js

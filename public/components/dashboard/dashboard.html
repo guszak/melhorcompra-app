@@ -1,0 +1,166 @@
+<div layout="column" flex>
+<md-toolbar class="md-primary" flex style="position: absolute; height: 300px;">
+	<div class="md-toolbar-tools"></div>
+</md-toolbar>
+<div class="md-padding" layout="column" layout-align="start stretch" style="z-index: 10; margin: 50px auto; max-width: 1100px; width: 100%;">
+	<md-card>
+        <md-card-title>
+			<md-icon class="material-icons">settings</md-icon>
+          <md-card-title-text style="margin-left: 8px;">
+            <span class="md-headline">Parâmetros</span>
+		  </md-card-title-text>
+		</md-card-title>
+		<md-card-content>
+			<div layout="row">
+					<div layout="column" class="md-padding" flex>
+		  <md-slider-container>
+			<span>Preço</span>
+			<md-slider flex min="0" max="10" ng-model="parametros.preco" aria-label="red" id="red-slider">
+			</md-slider>
+			<md-input-container>
+			  <input flex type="number" ng-model="parametros.preco" aria-label="red" aria-controls="red-slider">
+			</md-input-container>
+		  </md-slider-container>
+		  <md-slider-container>
+			<span>Prazo</span>
+			<md-slider flex min="0" max="10" ng-model="parametros.prazo" aria-label="red" id="red-slider">
+			</md-slider>
+			<md-input-container>
+			  <input flex type="number" ng-model="parametros.prazo" aria-label="red" aria-controls="red-slider">
+			</md-input-container>
+			</md-slider-container>
+			<md-slider-container>
+				<span>Compras</span>
+				<md-slider flex min="0" max="10" ng-model="parametros.negociacoes" aria-label="red" id="red-slider">
+				</md-slider>
+				<md-input-container>
+				<input flex type="number" ng-model="parametros.negociacoes" aria-label="red" aria-controls="red-slider">
+			</md-input-container>
+		</md-slider-container>
+			<md-slider-container>
+				<span>Atrasos</span>
+				<md-slider flex min="0" max="10" ng-model="parametros.atrasadas" aria-label="red" id="red-slider">
+				</md-slider>
+				<md-input-container>
+				<input flex type="number" ng-model="parametros.atrasadas" aria-label="red" aria-controls="red-slider">
+				</md-input-container>
+			  </md-slider-container>
+			  <md-slider-container>
+					<span>Tempo</span>
+					<md-slider flex min="0" max="10" ng-model="parametros.tempo" aria-label="red" id="red-slider">
+					</md-slider>
+					<md-input-container>
+					<input flex type="number" ng-model="parametros.tempo" aria-label="red" aria-controls="red-slider">
+					</md-input-container>
+				  </md-slider-container>
+					</div>
+					<md-divider></md-divider>
+					<div layout="column" class="md-padding" flex>
+							<md-input-container class="md-block">
+									<label>Individuos</label>
+									<input type="number" ng-model="parametros.individuos">
+								  </md-input-container>
+							<md-input-container class="md-block">
+									<label>Gerações</label>
+									<input type="number" ng-model="parametros.geracoes">
+								  </md-input-container>
+					</div>
+		</div>
+		</md-card-content>
+	  </md-card>
+	  <md-card>
+			<md-card-title>
+					<md-icon class="material-icons">local_offer</md-icon>
+			  <md-card-title-text style="margin-left: 8px;">
+				<span class="md-headline">Produtos</span>
+			  </md-card-title-text>
+			  </md-card-title>
+			  <md-card-content  layout="column">
+				  <div layout="row" layout-align="space-around center">
+						<md-autocomplete flex
+						md-input-name="autocompleteField"
+						md-input-minlength="0"
+						md-no-cache="true"
+						md-selected-item="novo.produto"
+						md-search-text="searchText"
+						md-items="produto in querySearch(searchText)"
+						md-item-text="produto.descricao"
+						md-floating-label="Selecione um produto">
+					  <md-item-template>
+						<span md-highlight-text="searchText">{{produto.descricao}}</span>
+					  </md-item-template>
+					  <div ng-messages="searchForm.autocompleteField.$error" ng-if="searchForm.autocompleteField.$touched">
+						<div ng-message="md-require-match">Please select an existing state.</div>
+						<div ng-message="minlength">Your entry is not long enough.</div>
+					  </div>
+					</md-autocomplete>
+				<md-input-container class="md-block">
+						<label>Quantidade</label>
+						<input type="number" ng-model="novo.quantidade">
+					  </md-input-container>
+				<md-button class="md-raised md-primary" ng-click="adicionarProduto()">Adicionar Produto</md-button>
+			</div>
+				<md-table-container>
+						<table md-table >
+							<thead md-head>
+								<tr md-row>
+									<th md-column>Produto</th>
+									<th md-column>Unidade</th>
+									<th md-column md-numeric>Quantidade</th>
+									<th md-column md-numeric></th>
+								</tr>
+							</thead>
+							<tbody md-body>
+								<tr md-row ng-repeat="produto in orcamento.produtos">
+									<td md-cell>{{produto.descricao}}</td>
+									<td md-cell>{{produto.unidade}}</td>
+									<td md-cell>{{produto.quantidade}}</td>
+									<td md-cell><md-icon class="material-icons" ng-click="removerProduto(produto)">close</md-icon></td>
+								</tr>
+							</tbody>
+						</table>
+					</md-table-container>
+			</md-card-content>
+		  </md-card>
+	  <md-card>
+        <md-card-title>
+				<md-icon class="material-icons">done</md-icon>
+          <md-card-title-text style="margin-left: 8px;">
+            <span class="md-headline">Progesso</span>
+		  </md-card-title-text>
+		  </md-card-title>
+		  <md-card-content  layout="column">
+		  <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+            Ler Orçamento
+		  </md-checkbox>
+		  <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+            Gerar População Inicial
+		  </md-checkbox>
+		  <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+            Atribuir Score
+		  </md-checkbox>
+		  <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+            Combinar Individuos
+		  </md-checkbox>
+		</md-card-content>
+	  </md-card>
+	  
+	  <md-card>
+        <md-card-title>
+				<md-icon class="material-icons">trending_up</md-icon>
+          <md-card-title-text style="margin-left: 8px;">
+            <span class="md-headline">Score</span>
+		  </md-card-title-text>
+		  </md-card-title>
+		  <md-card-content  layout="column">
+		  <canvas id="line" class="chart chart-line" chart-data="data"
+		  chart-labels="labels" chart-series="series" chart-colors="colors" chart-options="options"
+		  chart-dataset-override="datasetOverride" chart-click="onClick">
+		  </canvas>
+		</md-card-content>
+	  </md-card>
+	  <md-button class="md-fab md-primary md-fab-bottom-right docs-scroll-fab md-button md-ink-ripple scrolling" aria-label="Use Android" style="position:fixed;" ng-click="solicitarOrcamento()">
+			<md-icon class="material-icons">send</md-icon>
+		  </md-button>
+</div>
+</div>

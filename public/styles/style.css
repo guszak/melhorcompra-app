@@ -1,0 +1,16 @@
+.material-icons {
+	color: #757575;
+}
+.md-button {
+	color: white !important;
+	text-transform: capitalize;
+}
+.margin-left-5px {
+	margin-left: 5px;
+}
+.material-icons.md-light {
+	color: rgba(255, 255, 255, 1);
+}
+.md-datepicker-input-container {
+    width: 200px;
+}

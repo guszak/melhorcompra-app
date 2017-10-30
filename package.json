@@ -1,0 +1,45 @@
+{
+  "name": "charges-webapp",
+  "version": "1.0.0",
+  "description": "It is an webapp that manages your customers charges",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guszak/charges-webapp.git"
+  },
+  "author": "Lucas Guszak",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "1.5.10",
+    "angular-animate": "1.5.10",
+    "angular-aria": "1.5.10",
+    "angular-chart.js": "^1.1.1",
+    "angular-cookies": "^1.5.10",
+    "angular-i18n": "^1.6.4",
+    "angular-input-masks": "^2.6.0",
+    "angular-material": "1.1.1",
+    "angular-material-data-table": "^0.10.10",
+    "angular-resource": "1.5.8",
+    "angular-ui-notification": "^0.3.5",
+    "angular-ui-router": "^0.4.2",
+    "chart.js": "^2.7.0",
+    "del": "^2.2.2",
+    "event-stream": "^3.3.4",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.0.3",
+    "gulp-concat": "^2.6.1",
+    "gulp-inject": "^4.2.0",
+    "gulp-minify": "0.0.15",
+    "gulp-ng-config": "^1.4.0",
+    "gulp-rev": "^7.1.2",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-uglify": "^2.1.0",
+    "moment": "^2.17.1",
+    "pump": "^1.0.2",
+    "run-sequence": "^1.2.2",
+    "stream-series": "^0.1.1"
+  }
+}
