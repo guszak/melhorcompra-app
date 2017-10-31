@@ -1,4 +1,4 @@
-App.controller('dashboardCtrl', function ($scope, $state, $mdDialog, Notification, Orcamento, Produto) {
+App.controller('dashboardCtrl', function ($scope, $state, $mdDialog, $http,API_URL,Notification, Orcamento, Produto) {
 	
 	/**
      * Retorna a lista de produtos
@@ -53,19 +53,21 @@ App.controller('dashboardCtrl', function ($scope, $state, $mdDialog, Notificatio
 			unidade: $scope.novo.produto.unidade
 		}
 
-		$scope.orcamento.produtos.push(novoProduto);
+		$scope.solicitacao.orcamento.produtos.push(novoProduto);
 		
 		$scope.novo = {
 			produto: undefined,
 			quantidade: 0
 		}
+		$scope.solicitarOrcamento();
 	};
 
 	/**
      * Remove produto do orçamento
      */
 	$scope.removerProduto = function(produto) {
-		$scope.orcamento.produto.indexOf(produto);
+		$scope.solicitacao.orcamento.produto.indexOf(produto);
+		$scope.solicitarOrcamento();
 	};
 
 	/**
@@ -74,15 +76,20 @@ App.controller('dashboardCtrl', function ($scope, $state, $mdDialog, Notificatio
 	$scope.solicitarOrcamento = function() {
 		
 		$scope.loading = true;
-		$scope.orcamento.$save(success,error);
+		if( $scope.solicitacao.orcamento.produtos.length > 0){
+		$http.post(API_URL + '/orcamento', $scope.solicitacao)
+		.then(success,error);
+		}
+		//$scope.solicitacao.$save(success,error);
 	};
 
 	/**
      * Solicita orçamento
      */
-	function success(data) {
+	function success(response) {
 		$scope.loading = false;
-		console.log(data);
+		$scope.labels = response.data.labels
+		$scope.data = [response.data.scores]
 	};
 
 	/**
@@ -91,7 +98,7 @@ App.controller('dashboardCtrl', function ($scope, $state, $mdDialog, Notificatio
 	function error(response) {
 		$scope.loading = false;
 		$scope.error = response.data.error;
-		Notification.error({title: 'Cadastro de Formas de Pagamento', message: 'Ocorreu um erro, tente novamente mais tarde!'
+		Notification.error({title: 'Erro', message: 'Ocorreu um erro, tente novamente mais tarde!'
 			+' Se o problema persistir, entre em contato com o suporte técnico.'});
 	};
 
@@ -103,57 +110,32 @@ App.controller('dashboardCtrl', function ($scope, $state, $mdDialog, Notificatio
 			//limit: 10,
 			//page: 1
 		};
-		$scope.orcamento = new Orcamento();
-		$scope.orcamento.produtos = [];
+		$scope.solicitacao = new Orcamento();
 		$scope.getProdutos();
-		//'#1565c0'
-		// $scope.loading = true;
 		$scope.colors = ['#1565c0'];
-		// $scope.series = {}
-		// $scope.series.OBRAS = ['Obras']
-		// $scope.series.AVALIACAO = ['Avaliações']
-		// $scope.series.PROFISSIONAIS = ['Profissionais']
-		//$scope.getDashboard();
-		$scope.parametros = {
-			preco: 10,
-			prazo: 5,
-			negociacoes: 3,
-			atrasadas: 4,
-			tempo: 6,
-			individuos: 20,
-			geracoes: 100
+		$scope.solicitacao.preco = 10
+		$scope.solicitacao.prazo = 5
+		$scope.solicitacao.negociacoes = 3
+		$scope.solicitacao.atrasadas = 4
+		$scope.solicitacao.tempo = 6
+		$scope.solicitacao.individuos = 20
+		$scope.solicitacao.geracoes = 100
+		$scope.solicitacao.cruzamento = 0.7
+		$scope.solicitacao.mutacao = 1
+		$scope.solicitacao.orcamento = {
+				produtos: []
 		}
+
+		$scope.labels = [0];
+		$scope.series = ['Score'];
+		$scope.data = [
+			[0]
+		];
+		
 	}
 
 	main();
 
-	$scope.labels = ["Geração 1", "Geração 2", "Geração 3", "Geração 4", "Geração 5", "Geração 6", "Geração 7"];
-	$scope.series = ['Series A', 'Series B'];
-	$scope.data = [
-	  [50, 60, 68, 76, 82, 88, 80],
-	  [28, 48, 40, 19, 86, 27, 90]
-	];
-	$scope.onClick = function (points, evt) {
-	  console.log(points, evt);
-	};
-	$scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
-	$scope.options = {
-	  scales: {
-		yAxes: [
-		  {
-			id: 'y-axis-1',
-			type: 'linear',
-			display: true,
-			position: 'left'
-		  },
-		  {
-			id: 'y-axis-2',
-			type: 'linear',
-			display: true,
-			position: 'right'
-		  }
-		]
-	  }
-	};
+	
 })
 
