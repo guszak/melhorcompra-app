@@ -5,13 +5,14 @@
 				<md-icon class="material-icons">settings</md-icon>
 				<md-card-title-text style="margin-left: 8px;">
 					<span class="md-headline">Parâmetros</span>
+					<span class="md-subhead">Definições de pesos do score e de processamento do algoritmo genético</span>
 				</md-card-title-text>
 			</md-card-title>
 			<md-card-content>
 				<div layout="row">
 					<div layout="column" class="md-padding" flex>
 						<md-slider-container>
-							<span>Preço</span>
+							<span style="max-width: 60px;">Preço</span>
 							<md-slider flex min="0" max="10" ng-model="solicitacao.preco" aria-label="red" id="red-slider" ng-change="solicitarOrcamento()">
 							</md-slider>
 							<md-input-container>
@@ -19,7 +20,7 @@
 							</md-input-container>
 						</md-slider-container>
 						<md-slider-container>
-							<span>Prazo</span>
+							<span style="max-width: 60px;">Prazo</span>
 							<md-slider flex min="0" max="10" ng-model="solicitacao.prazo" aria-label="red" id="red-slider" ng-change="solicitarOrcamento()">
 							</md-slider>
 							<md-input-container>
@@ -27,7 +28,7 @@
 							</md-input-container>
 						</md-slider-container>
 						<md-slider-container>
-							<span>Compras</span>
+							<span style="max-width: 60px;">Compras</span>
 							<md-slider flex min="0" max="10" ng-model="solicitacao.negociacoes" aria-label="red" id="red-slider">
 							</md-slider>
 							<md-input-container>
@@ -35,7 +36,7 @@
 							</md-input-container>
 						</md-slider-container>
 						<md-slider-container>
-							<span>Atrasos</span>
+							<span style="max-width: 60px;">Atrasos</span>
 							<md-slider flex min="0" max="10" ng-model="solicitacao.atrasadas" aria-label="red" id="red-slider">
 							</md-slider>
 							<md-input-container>
@@ -43,7 +44,7 @@
 							</md-input-container>
 						</md-slider-container>
 						<md-slider-container>
-							<span>Tempo</span>
+							<span style="max-width: 60px;">Tempo</span>
 							<md-slider flex min="0" max="10" ng-model="solicitacao.tempo" aria-label="red" id="red-slider">
 							</md-slider>
 							<md-input-container>
@@ -53,6 +54,7 @@
 					</div>
 					<md-divider></md-divider>
 					<div layout="column" class="md-padding" flex>
+						<!--
 						<md-input-container class="md-block">
 							<label>Individuos</label>
 							<input type="number" ng-model="solicitacao.individuos" ng-change="solicitarOrcamento()">
@@ -61,14 +63,54 @@
 							<label>Gerações</label>
 							<input type="number" ng-model="solicitacao.geracoes" ng-change="solicitarOrcamento()">
 						</md-input-container>
-						<md-input-container class="md-block">
+						 <md-input-container class="md-block">
 								<label>Probabilidade Cruzamento</label>
 								<input type="number" min="0" max="1" ng-model="solicitacao.cruzamento" ng-change="solicitarOrcamento()">
 							</md-input-container>
-							<md-input-container class="md-block">
+						<md-input-container class="md-block">
 									<label>Probabilidade de Mutação</label>
 									<input type="number" min="0" max="1" ng-model="solicitacao.mutacao" ng-change="solicitarOrcamento()">
+							</md-input-container> -->
+							<md-slider-container>
+								<span style="max-width: 80px;">Individuos</span>
+								<md-slider flex min="0" max="1000" ng-model="solicitacao.individuos" aria-label="red" id="red-slider" ng-change="solicitarOrcamento()">
+								</md-slider>
+								<md-input-container>
+									<input flex type="number" ng-model="solicitacao.individuos" aria-label="red" aria-controls="red-slider" ng-change="solicitarOrcamento()">
+								</md-input-container>
+							</md-slider-container>
+							<md-slider-container>
+								<span style="max-width: 80px;">Gerações</span>
+								<md-slider flex min="0" max="1000" ng-model="solicitacao.geracoes" aria-label="red" id="red-slider" ng-change="solicitarOrcamento()">
+								</md-slider>
+								<md-input-container>
+									<input flex type="number" ng-model="solicitacao.geracoes" aria-label="red" aria-controls="red-slider" ng-change="solicitarOrcamento()">
+								</md-input-container>
+							</md-slider-container>
+							<md-slider-container>
+								<span style="max-width: 80px;">Torneio</span>
+								<md-slider flex min="0" max="100" ng-model="solicitacao.torneio" aria-label="red" id="red-slider" ng-change="solicitarOrcamento()">
+								</md-slider>
+								<md-input-container>
+									<input flex type="number" ng-model="solicitacao.torneio" aria-label="red" aria-controls="red-slider" ng-change="solicitarOrcamento()">
+								</md-input-container>
+							</md-slider-container>
+						<md-slider-container>
+							<span style="max-width: 80px;">Probabilidade Cruzamento</span>
+							<md-slider flex min="0" max="1" step="0.1" ng-model="solicitacao.cruzamento" aria-label="red" id="red-slider" ng-change="solicitarOrcamento()">
+							</md-slider>
+							<md-input-container>
+								<input flex type="number" ng-model="solicitacao.cruzamento" aria-label="red" aria-controls="red-slider" ng-change="solicitarOrcamento()">
 							</md-input-container>
+						</md-slider-container>
+						<md-slider-container>
+							<span style="max-width: 80px;">Probabilidade Mutação</span>
+							<md-slider flex min="0" max="1" step="0.1" ng-model="solicitacao.mutacao" aria-label="red" id="red-slider" ng-change="solicitarOrcamento()">
+							</md-slider>
+							<md-input-container>
+								<input flex type="number" ng-model="solicitacao.mutacao" aria-label="red" aria-controls="red-slider" ng-change="solicitarOrcamento()">
+							</md-input-container>
+						</md-slider-container>
 					</div>
 				</div>
 			</md-card-content>
@@ -78,6 +120,7 @@
 				<md-icon class="material-icons">local_offer</md-icon>
 				<md-card-title-text style="margin-left: 8px;">
 					<span class="md-headline">Produtos</span>
+					<span class="md-subhead">Seleção dos produtos que devem compor os individuos</span>
 				</md-card-title-text>
 			</md-card-title>
 			<md-card-content layout="column">
@@ -92,29 +135,31 @@
 							<div ng-message="minlength">Your entry is not long enough.</div>
 						</div>
 					</md-autocomplete>
-					<md-input-container class="md-block">
+					<!-- <md-input-container class="md-block">
 						<label>Quantidade</label>
 						<input type="number" ng-model="novo.quantidade">
-					</md-input-container>
+					</md-input-container> -->
 					<md-button class="md-raised md-primary" ng-click="adicionarProduto()">Adicionar Produto</md-button>
 				</div>
 				<md-table-container>
 					<table md-table>
 						<thead md-head>
 							<tr md-row>
+								<th md-column>ID</th>
 								<th md-column>Produto</th>
 								<th md-column>Unidade</th>
-								<th md-column md-numeric>Quantidade</th>
+								<!-- <th md-column md-numeric>Quantidade</th> -->
 								<th md-column md-numeric></th>
 							</tr>
 						</thead>
 						<tbody md-body>
 							<tr md-row ng-repeat="produto in solicitacao.orcamento.produtos">
+									<td md-cell>{{produto.produto_id}}</td>
 								<td md-cell>{{produto.descricao}}</td>
 								<td md-cell>{{produto.unidade}}</td>
-								<td md-cell>{{produto.quantidade}}</td>
-								<td md-cell>
-									<md-icon class="material-icons" ng-click="removerProduto(produto)">close</md-icon>
+								<!-- <td md-cell>{{produto.quantidade}}</td> -->
+								<td md-cell >
+									<md-icon class="material-icons" ng-click="removerProduto(produto)" style="cursor: pointer;">close</md-icon>
 								</td>
 							</tr>
 						</tbody>
@@ -152,12 +197,46 @@
 				<md-icon class="material-icons">trending_up</md-icon>
 				<md-card-title-text style="margin-left: 8px;">
 					<span class="md-headline">Score</span>
+					<span class="md-subhead">Evolução do maior score do população conforme as gerações</span>
 				</md-card-title-text>
 			</md-card-title>
 			<md-card-content layout="column">
 				<canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-colors="colors"
 				 chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick">
 				</canvas>
+			</md-card-content>
+		</md-card>
+		<md-card>
+			<md-card-title>
+				<md-icon class="material-icons">playlist_add_check</md-icon>
+				<md-card-title-text style="margin-left: 8px;">
+					<span class="md-headline">Resultado</span>
+					<span class="md-subhead">Melhor compra definida pelo otimização do resultado através do algoritmo genético</span>
+				</md-card-title-text>
+			</md-card-title>
+			<md-card-content layout="column">
+				<md-table-container>
+					<table md-table>
+						<thead md-head>
+							<tr md-row>
+								<th md-column>Produto</th>
+								<th md-column>Preço</th>
+								<th md-column>Prazo</th>
+								<th md-column md-numeric>Fornecedor</th>
+								<th md-column md-numeric>Score</th>
+							</tr>
+						</thead>
+						<tbody md-body>
+							<tr md-row ng-repeat="gene in melhorIndividuo.genes">
+								<td md-cell>{{gene.cliente_produto_id}}</td>
+								<td md-cell>{{gene.preco | currency: 'R$'}}</td>
+								<td md-cell>{{gene.prazo_entrega}} dias</td>
+								<td md-cell>{{gene.fornecedor_id}}</td>
+								<td md-cell>{{gene.score}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</md-table-container>
 			</md-card-content>
 		</md-card>
 	</div>

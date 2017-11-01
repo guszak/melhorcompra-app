@@ -66,7 +66,8 @@ App.controller('dashboardCtrl', function ($scope, $state, $mdDialog, $http,API_U
      * Remove produto do orçamento
      */
 	$scope.removerProduto = function(produto) {
-		$scope.solicitacao.orcamento.produto.indexOf(produto);
+		var index = $scope.solicitacao.orcamento.produtos.indexOf(produto);
+		$scope.solicitacao.orcamento.produtos.splice(index,1);
 		$scope.solicitarOrcamento();
 	};
 
@@ -90,6 +91,7 @@ App.controller('dashboardCtrl', function ($scope, $state, $mdDialog, $http,API_U
 		$scope.loading = false;
 		$scope.labels = response.data.labels
 		$scope.data = [response.data.scores]
+		$scope.melhorIndividuo = response.data.individuo
 	};
 
 	/**
@@ -120,8 +122,9 @@ App.controller('dashboardCtrl', function ($scope, $state, $mdDialog, $http,API_U
 		$scope.solicitacao.tempo = 6
 		$scope.solicitacao.individuos = 20
 		$scope.solicitacao.geracoes = 100
+		$scope.solicitacao.torneio = 20
 		$scope.solicitacao.cruzamento = 0.7
-		$scope.solicitacao.mutacao = 1
+		$scope.solicitacao.mutacao = 0.2
 		$scope.solicitacao.orcamento = {
 				produtos: []
 		}
