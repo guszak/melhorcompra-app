@@ -117,7 +117,15 @@ if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
   cd - > /dev/null
 fi
 
-# 4. Gulp deploy 
+# 4. Install Bower modules
+if [ -e "$DEPLOYMENT_TARGET/bower.json" ]; then
+    cd "$DEPLOYMENT_TARGET"
+    eval ./node_modules/.bin/bower install
+    exitWithMessageOnError "bower failed"
+    cd - > /dev/null
+fi
+
+# 5. Install Gulp
 if [ -e "$DEPLOYMENT_TARGET/gulpfile.js" ]; then
     cd "$DEPLOYMENT_TARGET"
     eval ./node_modules/.bin/gulp deploy
