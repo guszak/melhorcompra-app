@@ -29,18 +29,18 @@
 						</md-slider-container>
 						<md-slider-container>
 							<span style="max-width: 60px;">Compras</span>
-							<md-slider flex min="0" max="10" ng-model="solicitacao.negociacoes" aria-label="red" id="red-slider">
+							<md-slider flex min="0" max="10" ng-model="solicitacao.negociacoes" aria-label="red" id="red-slider" ng-change="solicitarOrcamento()">
 							</md-slider>
 							<md-input-container>
-								<input flex type="number" ng-model="solicitacao.negociacoes" aria-label="red" aria-controls="red-slider">
+								<input flex type="number" ng-model="solicitacao.negociacoes" aria-label="red" aria-controls="red-slider" ng-change="solicitarOrcamento()">
 							</md-input-container>
 						</md-slider-container>
 						<md-slider-container>
 							<span style="max-width: 60px;">Atrasos</span>
-							<md-slider flex min="0" max="10" ng-model="solicitacao.atrasadas" aria-label="red" id="red-slider">
+							<md-slider flex min="0" max="10" ng-model="solicitacao.atrasadas" aria-label="red" id="red-slider" ng-change="solicitarOrcamento()">
 							</md-slider>
 							<md-input-container>
-								<input flex type="number" ng-model="solicitacao.atrasadas" aria-label="red" aria-controls="red-slider">
+								<input flex type="number" ng-model="solicitacao.atrasadas" aria-label="red" aria-controls="red-slider" ng-change="solicitarOrcamento()">
 							</md-input-container>
 						</md-slider-container>
 						<md-slider-container>
