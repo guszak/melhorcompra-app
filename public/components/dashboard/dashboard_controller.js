@@ -124,7 +124,7 @@ App.controller('dashboardCtrl', function ($scope, $state, $mdDialog, $http,API_U
 		$scope.solicitacao.geracoes = 100
 		$scope.solicitacao.torneio = 20
 		$scope.solicitacao.cruzamento = 0.7
-		$scope.solicitacao.mutacao = 0.2
+		$scope.solicitacao.mutacao = 0
 		$scope.solicitacao.orcamento = {
 				produtos: []
 		}

@@ -28,7 +28,7 @@
 							</md-input-container>
 						</md-slider-container>
 						<md-slider-container>
-							<span style="max-width: 60px;">Compras</span>
+							<span style="max-width: 60px;">Total em Compras</span>
 							<md-slider flex min="0" max="10" ng-model="solicitacao.negociacoes" aria-label="red" id="red-slider" ng-change="solicitarOrcamento()">
 							</md-slider>
 							<md-input-container>
@@ -36,21 +36,21 @@
 							</md-input-container>
 						</md-slider-container>
 						<md-slider-container>
-							<span style="max-width: 60px;">Atrasos</span>
+							<span style="max-width: 60px;">Atrasos em Entregas</span>
 							<md-slider flex min="0" max="10" ng-model="solicitacao.atrasadas" aria-label="red" id="red-slider" ng-change="solicitarOrcamento()">
 							</md-slider>
 							<md-input-container>
 								<input flex type="number" ng-model="solicitacao.atrasadas" aria-label="red" aria-controls="red-slider" ng-change="solicitarOrcamento()">
 							</md-input-container>
 						</md-slider-container>
-						<md-slider-container>
+						<!-- <md-slider-container>
 							<span style="max-width: 60px;">Tempo</span>
 							<md-slider flex min="0" max="10" ng-model="solicitacao.tempo" aria-label="red" id="red-slider">
 							</md-slider>
 							<md-input-container>
 								<input flex type="number" ng-model="solicitacao.tempo" aria-label="red" aria-controls="red-slider">
 							</md-input-container>
-						</md-slider-container>
+						</md-slider-container> -->
 					</div>
 					<md-divider></md-divider>
 					<div layout="column" class="md-padding" flex>
@@ -71,14 +71,14 @@
 									<label>Probabilidade de Mutação</label>
 									<input type="number" min="0" max="1" ng-model="solicitacao.mutacao" ng-change="solicitarOrcamento()">
 							</md-input-container> -->
-							<md-slider-container>
+							<!-- <md-slider-container>
 								<span style="max-width: 80px;">Individuos</span>
 								<md-slider flex min="0" max="1000" ng-model="solicitacao.individuos" aria-label="red" id="red-slider" ng-change="solicitarOrcamento()">
 								</md-slider>
 								<md-input-container>
 									<input flex type="number" ng-model="solicitacao.individuos" aria-label="red" aria-controls="red-slider" ng-change="solicitarOrcamento()">
 								</md-input-container>
-							</md-slider-container>
+							</md-slider-container> -->
 							<md-slider-container>
 								<span style="max-width: 80px;">Gerações</span>
 								<md-slider flex min="0" max="1000" ng-model="solicitacao.geracoes" aria-label="red" id="red-slider" ng-change="solicitarOrcamento()">
@@ -103,14 +103,14 @@
 								<input flex type="number" ng-model="solicitacao.cruzamento" aria-label="red" aria-controls="red-slider" ng-change="solicitarOrcamento()">
 							</md-input-container>
 						</md-slider-container>
-						<md-slider-container>
+						<!-- <md-slider-container>
 							<span style="max-width: 80px;">Probabilidade Mutação</span>
 							<md-slider flex min="0" max="1" step="0.1" ng-model="solicitacao.mutacao" aria-label="red" id="red-slider" ng-change="solicitarOrcamento()">
 							</md-slider>
 							<md-input-container>
 								<input flex type="number" ng-model="solicitacao.mutacao" aria-label="red" aria-controls="red-slider" ng-change="solicitarOrcamento()">
 							</md-input-container>
-						</md-slider-container>
+						</md-slider-container> -->
 					</div>
 				</div>
 			</md-card-content>
@@ -135,10 +135,6 @@
 							<div ng-message="minlength">Your entry is not long enough.</div>
 						</div>
 					</md-autocomplete>
-					<!-- <md-input-container class="md-block">
-						<label>Quantidade</label>
-						<input type="number" ng-model="novo.quantidade">
-					</md-input-container> -->
 					<md-button class="md-raised md-primary" ng-click="adicionarProduto()">Adicionar Produto</md-button>
 				</div>
 				<md-table-container>
@@ -148,7 +144,6 @@
 								<th md-column>ID</th>
 								<th md-column>Produto</th>
 								<th md-column>Unidade</th>
-								<!-- <th md-column md-numeric>Quantidade</th> -->
 								<th md-column md-numeric></th>
 							</tr>
 						</thead>
@@ -157,7 +152,6 @@
 									<td md-cell>{{produto.produto_id}}</td>
 								<td md-cell>{{produto.descricao}}</td>
 								<td md-cell>{{produto.unidade}}</td>
-								<!-- <td md-cell>{{produto.quantidade}}</td> -->
 								<td md-cell >
 									<md-icon class="material-icons" ng-click="removerProduto(produto)" style="cursor: pointer;">close</md-icon>
 								</td>
@@ -169,29 +163,6 @@
 		</md-card>
 	</div>
 	<div layout="column" flex>
-		<!-- <md-card>
-        <md-card-title>
-				<md-icon class="material-icons">done</md-icon>
-          <md-card-title-text style="margin-left: 8px;">
-            <span class="md-headline">Progesso</span>
-		  </md-card-title-text>
-		  </md-card-title>
-		  <md-card-content  layout="column">
-		  <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-            Ler Orçamento
-		  </md-checkbox>
-		  <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-            Gerar População Inicial
-		  </md-checkbox>
-		  <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-            Atribuir Score
-		  </md-checkbox>
-		  <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-            Combinar Individuos
-		  </md-checkbox>
-		</md-card-content>
-	  </md-card> -->
-
 		<md-card>
 			<md-card-title>
 				<md-icon class="material-icons">trending_up</md-icon>
@@ -240,7 +211,4 @@
 			</md-card-content>
 		</md-card>
 	</div>
-	<!-- <md-button class="md-fab md-primary md-fab-bottom-right docs-scroll-fab md-button md-ink-ripple scrolling" aria-label="Use Android" style="position:fixed;" ng-click="solicitarOrcamento()">
-			<md-icon class="material-icons">send</md-icon>
-		  </md-button> -->
 </div>
