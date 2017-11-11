@@ -7,7 +7,7 @@
 */
 var App = angular.module('app', ['ngMaterial', 'ui-notification',
   'ui.utils.masks', 'md.data.table', 'ngResource', 'ui.router', 
-  'chart.js','ngCookies' ,'app.config'])
+  'chart.js','app.config'])
 
 var bustUrl = '?bust=' + Math.random().toString(36).slice(2)
 

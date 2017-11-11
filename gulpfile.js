@@ -84,7 +84,6 @@ gulp.task('pack-vendor-js', ['clean-vendor-js', 'clean-vendor-map'], function ()
     'node_modules/angular-animate/angular-animate.min.js',
     'node_modules/angular-resource/angular-resource.min.js',
     'node_modules/angular-ui-router/release/angular-ui-router.min.js',
-    'node_modules/angular-cookies/angular-cookies.min.js',
     'node_modules/angular-i18n/angular-locale_pt-br.js',
     'node_modules/angular-material-data-table/dist/md-data-table.min.js',
     'node_modules/angular-ui-notification/dist/angular-ui-notification.min.js',
